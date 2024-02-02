@@ -1,0 +1,72 @@
+% Document class and language
+\documentclass{report}
+\usepackage[english]{babel}
+
+% Style and margins
+\usepackage[a4paper, top=2.5cm, bottom=2.5cm, left=3cm, right=2cm]{geometry}
+
+% Fonts
+\usepackage{fontspec}
+\setsansfont{Times New Roman}
+\setmainfont{Times New Roman}
+\setlength{\parskip}{12pt}
+
+% Paragraph indentation
+\setlength{\parindent}{0.5cm}
+\usepackage{array}
+
+% Line spacing and table row height
+\linespread{1.5}
+\renewcommand{\arraystretch}{1.15}
+
+% Text alignment
+\raggedbottom
+
+% Table column types
+\newcolumntype{L}{>{\centering\arraybackslash}m{##1}}
+\newcolumntype{M}{>{\centering\arraybackslash}m{##1}}
+\newcolumntype{N}{>{\centering\arraybackslash}m{##1}}
+
+% Images
+\usepackage{graphicx}
+
+% Math equations
+\usepackage{amsmath}
+
+% Hyperlinks
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+% Enumerate
+\usepackage{enumitem}
+
+% code settings
+\usepackage{listings}
+\usepackage{xcolor}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codeorange}{rgb}{1,0.49,0}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.96}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegray},
+    keywordstyle=\color{codeorange},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codegreen},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    xleftmargin=10pt,
+}
+
+\lstset{style=mystyle}
+
+% \lstinputlisting[language=Python, caption={Calculate PMV with pythermalcomfort.},label={lst:pmv_example}, mathescape=true, firstline=1]{snipet_1.py}
