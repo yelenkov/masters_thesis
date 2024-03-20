@@ -1,4 +1,4 @@
-\chapter{The Functional Programming Paradigm}
+\chapter{The functional programming paradigm}
 %\label{chap:functional_programming}
 %\addcontentsline{toc}{chapter}{\numberline{\thechapter}The Functional Programming Paradigm}
 
@@ -9,3 +9,43 @@ In the first chapter, I would:
 \item Mention the benefits of these concepts, such as \emph{easier parallelization}, \emph{higher-order functions}, and \emph{pattern matching}, in contrast to traditional imperative paradigms.
 \item Discuss how Scala flexibly combines both object-oriented and functional approaches.
 \end{itemize}
+
+
+// TODO
+
+\section{What is functional programming?}
+
+Functional programming, means programming with pure functions.
+
+Pure function is one that lacks side effects.\footnotemark
+
+\footnotetext{\fullcite[16-18,][]{michael.etal_2023}}
+// TODO
+
+pure functions
+
+Referential transparency and purity
+
+"An expression e is referentially transparent if, for all programs p, all occurrences of e in p can be replaced by the result of evaluating e without affecting the meaning of p. A function f is pure if the expression f(x) is referentially transparent for all referentially transparent x."\footnotemark
+
+\footnotetext{\fullcite[18,][]{michael.etal_2023}}
+
+\subsection{Side effects}
+
+A side effect in programming refers to a change in the state of a computer or a program beyond just returning a value. In other words, a function with side effects modifies some state variable values outside its local scope.
+
+Side effects are generally considered undesirable because they make functions unpredictable and dependent on the system's state.
+
+In Scala, a function without side effects simply calculates a value, without reading anything from input, printing anything to output, or assigning values to external variables. Such functions are deterministic, meaning they always return the same result given the same input. On the other hand, a function with side effects may read from input, print to output, or modify external variables.
+
+// TODO
+Insert there a function with a side effect
+
+Function without side effect
+\lstinputlisting{code/snipet_1.tex}
+
+
+
+// TODO
+What is a pure function?\footnotemark
+
