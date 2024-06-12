@@ -1,0 +1,4 @@
+import scala.collection.parallel.immutable.ParVector
+
+val data: ParVector[Int] = ParVector.range(1, 1000000)
+val processed = data.map(_ * 2).filter(_ % 3 == 0).reduce(_ + _)

@@ -1,0 +1,12 @@
+case class DataPipeline[A](data: List[A]) {
+  def map[B](f: A => B): DataPipeline[B] = DataPipeline(data.map(f))
+  def filter(f: A => Boolean): DataPipeline[A] = DataPipeline(data.filter(f))
+  def reduce[B >: A](f: (B, B) => B): B = data.reduce(f)
+}
+
+val pipeline = DataPipeline(List(1, 2, 3, 4, 5))
+                .map(x => x * x)
+                .filter(x => x > 10)
+                .reduce(_ + _)
+
+println(pipeline) // Output: 41

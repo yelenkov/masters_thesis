@@ -1,0 +1,43 @@
+sealed trait Option[+A]
+case class Some[A](value: A) extends Option[A]
+case object None extends Option[Nothing]
+
+sealed trait List[+A]
+case object Nil extends List[Nothing]
+case class Cons[A](head: A, tail: List[A]) extends List[A]
+
+sealed trait Tree[+A]
+case class Leaf[A](value: A) extends Tree[A]
+case class Branch[A](left: Tree[A], right: Tree[A]) extends Tree[A]
+
+object ADTExample {
+  def main(args: Array[String]): Unit = {
+    // Using Option ADT
+    val someValue: Option[Int] = Some(42)
+    val noneValue: Option[Int] = None
+
+    val optionResult = someValue match {
+      case Some(value) => s"Found value: $value"
+      case None        => "No value found"
+    }
+    println(optionResult) // Output: Found value:42
+
+    // Using List ADT
+    val list: List[Int] = Cons(1, Cons(2, Cons(3, Nil)))
+
+    def sumList(list: List[Int]): Int = list match {
+      case Nil          => 0
+      case Cons(x, xs)  => x + sumList(xs)
+    }
+    println(s"Sum of the list: ${sumList(list)}") // Output: Sum of the list: 6
+
+    // Using Tree ADT
+    val tree: Tree[Int] = Branch(Leaf(1), Branch(Leaf(2), Leaf(3)))
+
+    def sumTree(tree: Tree[Int]): Int = tree match {
+      case Leaf(value)  => value
+      case Branch(l, r) => sumTree(l) + sumTree(r)
+    }
+    println(s"Sum of the tree: ${sumTree(tree)}") // Output: Sum of the tree: 6
+  }
+}

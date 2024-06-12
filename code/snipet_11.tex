@@ -1,0 +1,12 @@
+// superclass
+class Animal(val name: String) {
+  def speak(): Unit = println("...")
+}
+
+// inherits function speak() from the Animal superclass
+class Dog(name: String) extends Animal(name) {
+  override def speak(): Unit = println("Woof!") // changes the implementation
+}
+
+val dog = new Dog("Buddy")
+dog.speak() // Output: Woof!

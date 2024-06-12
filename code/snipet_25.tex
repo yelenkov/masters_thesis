@@ -1,0 +1,18 @@
+def loadData(path: String): Stream[String] = {
+  val source = io.Source.fromFile(path)
+  val lines = source.getLines().toStream
+  source.close()
+  lines
+}
+
+def processData(data: Stream[String]): Stream[(String, Int)] = {
+  data.flatMap(_.split(" "))
+      .map((_, 1))
+      .groupBy(_._1)
+      .mapValues(_.map(_._2).sum)
+      .toStream
+}
+
+val data = loadData("path/to/data.txt")
+val processed = processData(data)
+processed.take(10).foreach(println)

@@ -1,6 +1,7 @@
 % Document class and language
 \documentclass{report}
 \usepackage[english]{babel}
+\usepackage[autostyle]{csquotes}
 \usepackage[style=apa, sortcites=true, sorting=nyt, backend=biber]{biblatex}
 \addbibresource{references/Thesis.bib}
 % Style and margins
@@ -12,6 +13,10 @@
 \setmainfont{Times New Roman}
 \setlength{\parskip}{12pt}
 
+% Footnote font size
+\usepackage{scrextend}
+\addtokomafont{footnote}{\fontsize{10pt}{12pt}\selectfont}
+
 % Paragraph indentation
 \setlength{\parindent}{0.5cm}
 \usepackage{array}
@@ -22,6 +27,10 @@
 
 % Text alignment
 \raggedbottom
+
+% Page numbering
+\usepackage{etoolbox}
+\pagenumbering{arabic}
 
 % Table column types
 \newcolumntype{L}{>{\centering\arraybackslash}m{##1}}

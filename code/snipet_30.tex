@@ -1,0 +1,13 @@
+trait Semigroup[A] {
+  def combine(x: A, y: A): A
+}
+
+object Semigroup {
+  implicit val intSemigroup: Semigroup[Int] = new Semigroup[Int] {
+    def combine(x: Int, y: Int): Int = x + y
+  }
+
+  implicit val stringSemigroup: Semigroup[String] = new Semigroup[String] {
+    def combine(x: String, y: String): String = x + y
+  }
+}

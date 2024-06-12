@@ -1,0 +1,31 @@
+sealed trait Shape
+case class Rectangle(width: Double, height: Double) extends Shape
+case class Circle(radius: Double) extends Shape
+case class Triangle(base: Double, height: Double) extends Shape
+
+def area(shape: Shape): Double = shape match {
+  case Rectangle(w, h) => w * h
+  case Circle(r)       => math.Pi * r * r
+  case Triangle(b, h)  => 0.5 * b * h
+}
+
+def describe(shape: Shape): String = shape match {
+  case Rectangle(w, h) => s"A rectangle with width $w and height $h"
+  case Circle(r)       => s"A circle with radius $r"
+  case Triangle(b, h)  => s"A triangle with base $b and height $h"
+}
+
+def main(args: Array[String]): Unit = {
+  val shapes = List(
+    Rectangle(4, 5),
+    Circle(3),
+    Triangle(6, 8),
+    Circle(2.5)
+  )
+  
+  shapes.foreach { shape =>
+    val shapeDescription = describe(shape)
+    val shapeArea = area(shape)
+    println(s"$shapeDescription has an area of $shapeArea")
+  }
+}

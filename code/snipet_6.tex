@@ -1,0 +1,10 @@
+def processData[A, B](data: List[A], transformFn: A => B, filterFn: B => Boolean, aggregateFn: (B, B) => B): B = {
+  data.map(transformFn)
+      .filter(filterFn)
+      .reduce(aggregateFn)
+}
+
+val data = List(1, 2, 3, 4, 5)
+val sum = processData(data, x => x * x, x => x > 10, _ + _)
+
+println(sum) // Output: 41

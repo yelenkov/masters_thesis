@@ -1,0 +1,5 @@
+def area(shape: Shape): Double = shape match {
+  case Circle(radius) => math.Pi * radius * radius
+  case Rectangle(width, height) => width * height
+  case Triangle(base, height) => 0.5 * base * height
+}

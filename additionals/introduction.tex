@@ -1,6 +1,69 @@
+\pagenumbering{arabic}
+\setcounter{page}{1}
 \chapter*{Introduction}
 \addcontentsline{toc}{chapter}{Introduction}
 
-In the introduction\footnote{first footnote}, I would provide background on the rise of big data and the crucial role of data engineering in managing and processing large volumes of data efficiently. Then,\footnotemark discuss the need for scalable and high-performance data processing frameworks like Apache Spark, and how Scala has emerged as a preferred language for data engineering due to its functional programming capabilities\cite{halliday_2018}.\footnotemark[\value{footnote}]
+\section*{Background and rationale}
+\addcontentsline{toc}{section}{Background and rationale}
 
-\footnotetext{note}
+In today's data-driven world, organizations increasingly rely on insights derived from vast amounts of data to make informed decisions, optimize processes, and gain a competitive edge. As the volume, variety, and velocity of data continue to grow exponentially, the role of data engineers has become indispensable in designing, building, and maintaining both the physical infrastructure and data pipelines. These enable the efficient collection, storage, processing, and analysis of big data.
+
+In this context, functional programming has emerged as a powerful paradigm for building scalable, maintainable, and parallelizable data pipelines. Scala, a programming language that seamlessly integrates object-oriented and functional programming concepts, has gained significant traction in the data engineering community due to its expressiveness, type safety, and interoperability with the Java ecosystem.
+
+The rationale for choosing this topic stems from the growing importance of data engineering in the big data era and the need for data engineers to adopt tools and techniques that can help them build efficient, robust, and scalable data pipelines. Functional programming, particularly in Scala, offers a promising approach to address the challenges faced by data engineers in processing large datasets efficiently.
+
+The work is both theoretical and empirical, as it presents a theoretical discourse and demonstrates the practical application of leveraging functional programming in Scala for efficient data engineering. The integration of theory and practice served as an additional motivation for undertaking this topic for my master's thesis.
+
+
+\section*{Research objectives and learning goals}
+\addcontentsline{toc}{section}{Research objectives and learning goals}
+
+The main objective of this thesis is to explore how functional programming in Scala can be leveraged to build efficient, scalable, and maintainable data pipelines. The focus was on the key concepts, techniques, and best practices in data engineering using Scala. The specific research goals are:
+
+\begin{enumerate}
+    \item To explore the fundamental principles of functional programming in Scala and their application to data engineering.
+    \item To examine the design and implementation of scalable, maintainable data pipelines using Scala and relevant libraries.
+    \item To explore the best practices and design patterns for building data engineering workflows in Scala.
+    \item To investigate the use of Scala for parallel and distributed data processing, using frameworks like Apache Spark.
+    \item To explore the challenges and techniques for stream processing and real-time data analytics using Scala.
+    \item To examine the testing, monitoring, and deployment strategies for Scala-based data pipelines in production environments.
+\end{enumerate}
+
+By focusing on these goals, the thesis aims to provide a comprehensive understanding of how functional programming in Scala can be applied to build robust and efficient data pipelines. The research was driven by a desire to gain practical knowledge and skills in data engineering using Scala.
+
+\section*{Purpose and scope}
+\addcontentsline{toc}{section}{Purpose and scope}
+
+The purpose of this thesis is to investigate how functional programming in Scala can be leveraged to build efficient, scalable, and maintainable data pipelines. 
+
+The research focuses on exploring the key concepts, libraries, and frameworks in the Scala ecosystem that are relevant to data engineering, and demonstrating their application through practical examples and case studies. 
+
+The scope of the work covers the entire data engineering workflow, from data ingestion and storage to processing, serving, and monitoring. The thesis also explores the use of Scala for both batch and streaming data pipelines, and discusses the trade-offs and best practices for each approach.
+
+\section*{Research methods}
+\addcontentsline{toc}{section}{Research methods}
+
+The research employs a combination of literature review, practical experimentation, and case study analysis. The literature review involves a comprehensive survey of existing research on functional programming, Scala, and data engineering, to establish a solid theoretical foundation for the work.
+
+Practical experimentation involves hands-on development of data pipelines using Scala and relevant libraries, such as Akka, Cats, Fs2, and Monix. The experiments aim to validate the applicability of functional programming techniques to real-world data engineering scenarios and identify best practices and design patterns.
+
+Case study analysis involves examining real-world examples of data pipelines built using Scala and functional programming, to derive insights into their architecture, performance, and maintainability. The case studies were selected based on their relevance to the research goals and their potential to provide valuable lessons for data engineers.
+
+\section*{Thesis structure}
+\addcontentsline{toc}{section}{Thesis structure}
+
+The thesis is structured into seven chapters, each focusing on a specific aspect of leveraging functional programming in Scala for data engineering.
+
+The first chapter lies the groundwork by introducing the key concepts and principles of functional programming in Scala and discussing their relevance to data engineering. This provides a solid foundation for the subsequent chapters.
+
+The second chapter dives into the practical application of Scala and functional programming in building data pipelines. It explores the development of both batch and streaming pipelines, utilizing relevant libraries and frameworks. 
+
+In the third chapter, the focuses shift to parallel and distributed data processing. It investigates how Scala's functional programming features can be harnessed to efficiently process large datasets using frameworks like Apache Spark and other distributed computing tools.
+
+The fourth chapter delves into the realm of stream processing with Scala. It examines the use of libraries such as Akka Streams and Monix Observable for real-time data processing and discusses the challenges and best practices associated with building streaming data pipelines. Testing is a crucial aspect of any software development process, and data pipelines are no exception.
+
+The fifth chapter explores how functional programming techniques can be applied to test data pipelines, using tools like ScalaCheck and Mockito. It emphasizes the importance of testing in ensuring the reliability and correctness of data engineering workflows.
+
+The sixth chapter focuses on the deployment and monitoring of Scala-based data pipelines in production environments. It covers techniques and best practices for deployment using tools such as Docker and Kubernetes. Additionally, it highlights the significance of monitoring and logging in maintaining the health and performance of data pipelines.
+
+Finally, the seventh chapter concludes the thesis by summarizing the key findings and contributions. It discusses the limitations of the research and potential avenues for future work. The chapter also provides recommendations for data engineers looking to leverage functional programming in Scala for building efficient data pipelines.

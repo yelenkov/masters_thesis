@@ -1,0 +1,27 @@
+// Type class definition
+trait Semigroup[A] {
+  def combine(x: A, y: A): A
+}
+
+// Type class instances
+implicit val intSemigroup: Semigroup[Int] = new Semigroup[Int] {
+  def combine(x: Int, y: Int): Int = x + y
+}
+
+implicit val stringSemigroup: Semigroup[String] = new Semigroup[String] {
+  def combine(x: String, y: String): String = x + y
+}
+
+// Generic function using the type class
+def combineAll[A](values: List[A])(implicit semigroup: Semigroup[A]): A =
+  values.reduce(semigroup.combine)
+
+object TypeClassExample {
+  def main(args: Array[String]): Unit = {
+    val numbers = List(1, 2, 3, 4, 5)
+    val strings = List("Hello", ", ", "world", "!")
+
+    println(combineAll(numbers)) // Output: 15
+    println(combineAll(strings)) // Output: Hello, world!
+  }
+}
