@@ -1,0 +1,12 @@
+\begin{table}[H]
+\caption{Direct acrylic graph (DAG)}
+\begin{lstlisting}
+val data = spark.textFile("hdfs://path/to/data.txt")
+val words = data.flatMap(_.split(" "))
+val wordCounts = words.map((_, 1)).reduceByKey(_ + _)
+wordCounts.saveAsTextFile("hdfs://path/to/output")
+\end{lstlisting}
+\small
+\textit{Note.} In this example, the \textbf{data} RDD (Resilient Distributed Dataset) represents a large text file stored in HDFS. The \textbf{flatMap}, \textbf{map}, and \textbf{reduceByKey} operations are lazily evaluated, building a DAG of transformations. The actual computation is triggered only when the \textbf{saveAsTextFile} action is called, allowing Spark to optimize the execution plan and distribute the processing across the cluster.
+\textit{Creator.} Author's own work.
+\end{table}

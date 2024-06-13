@@ -1,0 +1,27 @@
+\begin{table}[H]
+\caption{Monads and error handling}
+\begin{lstlisting}
+import scala.io.Source
+def readFile(filename: String): Either[String, List[String]] =
+  try {val lines = Source.fromFile(filename).getLines().toList
+    Right(lines)} catch {case e: Exception => Left(s"Error reading file: ${e.getMessage}")}
+def parseData(lines: List[String]): Either[String, List[Int]] =
+  try {val parsed = lines.map(_.toInt)
+    Right(parsed)} catch {case e: NumberFormatException => Left(s"Error parsing data: ${e.getMessage}")}
+def processData(data: List[Int]): Either[String, Int] =
+  try {val result = // Perform data processing
+    Right(result)} catch {case e: Exception => Left(s"Error processing data: ${e.getMessage}")}
+val pipeline = for {
+  lines <- readFile("data.txt")
+  parsed <- parseData(lines)
+  result <- processData(parsed)
+} yield result
+pipeline match {
+  case Right(result) => println(s"Data processing successful: $result")
+  case Left(error)   => println(s"Data processing failed: $error")}
+\end{lstlisting}
+\small
+\textit{Note.} In this example, the \textbf{readFile}, \textbf{parseData}, and \textbf{processData} functions return an \textbf{Either} monad, representing either a successful result or an error message. The \textbf{pipeline} is constructed using a for-comprehension, which chains the operations together using the \textbf{flatMap} and \textbf{map} methods of \textbf{Either}. If any step in the pipeline fails, the error is propagated, and the final result is a \textbf{Left} containing the error message. If all steps succeed, the final result is a \textbf{Right} containing the processed data.
+\textit{Creator.} Author's own work.
+\end{table}
+

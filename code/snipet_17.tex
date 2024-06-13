@@ -1,4 +1,0 @@
-val data = spark.textFile("hdfs://path/to/data.txt")
-val words = data.flatMap(_.split(" "))
-val wordCounts = words.map((_, 1)).reduceByKey(_ + _)
-wordCounts.saveAsTextFile("hdfs://path/to/output")

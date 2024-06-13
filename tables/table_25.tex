@@ -1,0 +1,20 @@
+\begin{table}[h!]
+\caption{Akka actors}
+\begin{lstlisting}
+import akka.actor.{Actor, ActorSystem, Props}
+case class ProcessData(data: List[Int])
+case class ProcessedData(result: Int)
+class DataProcessor extends Actor {
+  def receive = {
+    case ProcessData(data) =>
+      val result = data.map(_ * 2).filter(_ % 3 == 0).sum
+      sender() ! ProcessedData(result)}}
+val system = ActorSystem("DataProcessingSystem")
+val processor = system.actorOf(Props[DataProcessor], "processor")
+val data = List(1, 2, 3, 4, 5)
+processor ! ProcessData(data)
+\end{lstlisting}
+\small
+\textit{Note.} In this example, an Akka actor system is created, and a \textbf{DataProcessor} actor is defined. The actor receives a \textbf{ProcessData} message containing a list of integers, processes the data, and sends back a \textbf{ProcessedData} message with the result. The actor can be distributed across multiple nodes in a cluster, allowing for the parallel and distributed processing of data.
+\textit{Creator.} Author's own work.
+\end{table}

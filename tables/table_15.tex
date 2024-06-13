@@ -1,0 +1,12 @@
+\begin{table}[h!]
+\caption{Data model using ADTs}
+\begin{lstlisting}
+sealed trait Shape
+case class Circle(radius: Double) extends Shape
+case class Rectangle(width: Double, height: Double) extends Shape
+case class Triangle(base: Double, height: Double) extends Shape
+\end{lstlisting}
+\small
+\textit{Note.} In this example, the \textbf{Shape} ADT represents different geometric shapes. It is defined as a sealed trait, and the individual shapes (Circle, Rectangle, Triangle) are defined as case classes that extend the \textbf{Shape} trait. This allows for the creation of a type-safe and expressive data model for representing shapes.
+\textit{Creator.} Author's own work.
+\end{table}

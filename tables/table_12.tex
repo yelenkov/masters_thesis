@@ -1,0 +1,11 @@
+\begin{table}[h!]
+\caption{Infinite fibonacci stream}
+\begin{lstlisting}
+def fibonacci: Stream[Int] = 0 #:: 1 #:: fibonacci.zip(fibonacci.tail).map(t => t._1 + t._2)
+val fibs = fibonacci.take(10).toList
+println(fibs) // Output: List(0, 1, 1, 2, 3, 5, 8, 13, 21, 34)
+\end{lstlisting}
+\small
+\textit{Note.} In this example, the \textbf{fibonacci} function defines an infinite stream of Fibonacci numbers using lazy evaluation. The \textbf{\#::} operator is used to construct the stream lazily, and the \textbf{zip} and \textbf{map} operations are used to generate the next Fibonacci number based on the previous two. The \textbf{take} operation limits the evaluation to the first 10 elements, avoiding the need to compute the entire infinite sequence.
+\textit{Creator.} Author's own work.
+\end{table}

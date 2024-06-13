@@ -1,0 +1,10 @@
+\begin{table}[h!]
+\caption{flatMap}
+\begin{lstlisting}
+val data = List("hello world", "functional programming", "data engineering")
+val words = data.flatMap(_.split(" "))
+println(words) // Output: List("hello", "world", "functional", "programming", "data", "engineering")
+\end{lstlisting}
+\small
+\textit{Note.} The \textbf{flatMap} function applies a given function to each element of a collection and flattens the resulting collections into a single collection. It is used for transformations that produce zero or more elements per input element, and is particularly useful for data flattening and joining operations.
+\end{table}

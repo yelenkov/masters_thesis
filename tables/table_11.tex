@@ -1,0 +1,14 @@
+\begin{table}[H]
+\caption{Lazy evaluation}
+\begin{lstlisting}
+lazy val data = {
+  println("Initializing data...")
+  List(1, 2, 3, 4, 5)}
+println("Before accessing data")
+val result = data.map(_ * 2)
+println("After accessing data")
+\end{lstlisting}
+\small
+\textit{Note.} In this example, the \textbf{data} value is defined as a lazy value. The initialization code inside the block is not executed until \textbf{data} is accessed for the first time. This allows for the deferred execution of potentially expensive computations and enables the creation of data processing pipelines that can handle large datasets efficiently.
+\textit{Creator.} Author's own work.
+\end{table}

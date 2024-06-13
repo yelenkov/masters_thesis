@@ -1,0 +1,11 @@
+\begin{table}[h!]
+\caption{Parallel vector}
+\begin{lstlisting}
+import scala.collection.parallel.immutable.ParVector
+val data: ParVector[Int] = ParVector.range(1, 1000000)
+val processed = data.map(_ * 2).filter(_ % 3 == 0).reduce(_ + _)
+\end{lstlisting}
+\small
+\textit{Note.} In this example, the data is a parallel vector containing a large number of integers. The \textbf{map}, \textbf{filter}, and \textbf{reduce} operations are executed in parallel, utilizing multiple CPU cores to process the data efficiently.
+\textit{Creator.} Author's own work.
+\end{table}

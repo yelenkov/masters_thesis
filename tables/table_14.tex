@@ -1,0 +1,25 @@
+\begin{table}[h!]
+\caption{Data processing workflow}
+\begin{lstlisting}
+def loadData(path: String): Stream[String] = {
+  val source = io.Source.fromFile(path)
+  val lines = source.getLines().toStream
+  source.close()
+  lines}
+  
+def processData(data: Stream[String]): Stream[(String, Int)] = {
+  data.flatMap(_.split(" "))
+      .map((_, 1))
+      .groupBy(_._1)
+      .mapValues(_.map(_._2).sum)
+      .toStream
+}
+val data = loadData("path/to/data.txt")
+val processed = processData(data)
+
+processed.take(10).foreach(println)
+\end{lstlisting}
+\small
+\textit{Note.} In this example, the \textbf{loadData} function lazily loads data from a file and returns a stream of lines. The \textbf{processData} function defines a series of lazy transformations on the input stream, including splitting lines into words, counting word occurrences, and grouping by word. The \textbf{take} operation triggers the evaluation of the first 10 elements, and the \textbf{foreach} operation prints the results. This modular and composable approach allows for the creation of reusable data processing components that can be easily combined and adapted to different datasets and requirements.
+\textit{Creator.} Author's own work.
+\end{table}

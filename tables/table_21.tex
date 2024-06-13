@@ -1,0 +1,25 @@
+\begin{table}[h!]
+\caption{Implicit instance}
+\begin{lstlisting}
+trait Encoder[A] {def encode(value: A): String}
+object Encoder {
+  implicit val intEncoder: Encoder[Int] = new Encoder[Int] {
+    def encode(value: Int): String = value.toString}
+  implicit val stringEncoder: Encoder[String] = new Encoder[String] {
+    def encode(value: String): String = value}
+  implicit def listEncoder[A](implicit encoder: Encoder[A]): Encoder[List[A]] = new Encoder[List[A]] {
+    def encode(values: List[A]): String = values.map(encoder.encode).mkString("[", ",", "]")}}
+def processData[A](data: List[A])(implicit encoder: Encoder[A]): String =
+  data.map(encoder.encode).mkString(",") 
+val numbers = List(1, 2, 3, 4, 5)
+val strings = List("apple", "banana", "orange")
+val nested = List(List(1, 2), List(3, 4), List(5, 6))
+println(processData(numbers)) // Output: "1,2,3,4,5"
+println(processData(strings)) // Output: "apple,banana,orange"
+println(processData(nested)) // Output: "[1,2],[3,4],[5,6]"
+\end{lstlisting}
+\small
+\textit{Note.} In this example, an \textbf{Encoder} type class is defined, it provides an \textbf{encode} operation to convert values of type \textbf{A} to a string representation. Implicit instances of \textbf{Encoder} for \textbf{Int} and \textbf{String} types are provided. Also, an implicit \textbf{listEncoder} is defined, it can encode a list of values of type \textbf{A}, given an implicit \textbf{Encoder} instance for type \textbf{A}.
+The \textbf{processData} function takes a list of values of type \textbf{A} and an implicit \textbf{Encoder} instance for type \textbf{A}. It uses the \textbf{encode} operation to convert each value to its string representation and concatenates them into a single string. The function can be called with any type that has an implicit \textbf{Encoder} instance, including nested lists, demonstrating the composability and reusability of type classes.
+\textit{Creator.} Author's own work.
+\end{table}

@@ -1,0 +1,16 @@
+\begin{table}[h!]
+\caption{Generic data processing pipeline with higher-order functions}
+\begin{lstlisting}
+def processData[A, B](data: List[A],
+    transformFn: A => B, filterFn: B => Boolean, aggregateFn: (B, B) => B): B = {
+  data.map(transformFn)
+      .filter(filterFn)
+      .reduce(aggregateFn)}
+val data = List(1, 2, 3, 4, 5)
+val sum = processData(data, x => x * x, x => x > 10, _ + _)
+println(sum) // Output: 41
+\end{lstlisting}
+\small
+\textit{Note.} In this example, the \textbf{processData} function is a higher-order function that takes three function parameters: \textbf{transformFn} for data transformation, \textbf{filterFn} for data filtering, and \textbf{aggregateFn} for data aggregation. By providing different functions as arguments, the \textbf{processData} function can be easily customized for different data processing scenarios, promoting code reuse and modularity.
+\textit{Creator.} Author's own work.
+\end{table}

@@ -1,6 +1,0 @@
-def processData(data: List[Shape]): Double = data match {
-  case Nil => 0.0
-  case Circle(radius) :: rest => radius * radius + processData(rest)
-  case Rectangle(width, height) :: rest => width * height + processData(rest)
-  case Triangle(base, height) :: rest => 0.5 * base * height + processData(rest)
-}

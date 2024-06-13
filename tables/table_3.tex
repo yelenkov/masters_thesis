@@ -1,0 +1,13 @@
+\begin{table}[H]
+\caption{Partitioning a vector based on a predicate}
+\begin{lstlisting}
+val data = Vector(1, 2, 3, 4, 5)
+val evenData = data.filter(_ % 2 == 0)
+val oddData = data.filter(_ % 2 != 0)
+println(evenData) // Output: Vector(2, 4)
+println(oddData)  // Output: Vector(1, 3, 5)
+\end{lstlisting}
+\small
+\textit{Note.} In this example, the \textbf{data} vector is shared between the \textbf{evenData} and \textbf{oddData} computations. Since \textbf{data} is immutable, it can be safely accessed and filtered by both computations without the risk of data races or inconsistencies.
+\textit{Creator.} Author's own work.
+\end{table}

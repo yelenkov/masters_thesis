@@ -1,0 +1,12 @@
+\begin{table}[h!]
+\caption{Pattern matching}
+\begin{lstlisting}
+def area(shape: Shape): Double = shape match {
+  case Circle(radius) => math.Pi * radius * radius
+  case Rectangle(width, height) => width * height
+  case Triangle(base, height) => 0.5 * base * height}
+\end{lstlisting}
+\small
+\textit{Note.} In this example, the \textbf{area} function uses pattern matching to calculate the area of different shapes. The \textbf{match} expression checks the type of the \textbf{shape} parameter and extracts the relevant fields based on the corresponding case class. This allows for concise and expressive code that handles each shape variant separately.
+\textit{Creator.} Author's own work.
+\end{table}

@@ -1,9 +1,0 @@
-import org.apache.spark.sql.SparkSession
-
-val spark = SparkSession.builder().appName("DataProcessing").getOrCreate()
-
-val data = spark.read.textFile("hdfs://path/to/data.txt")
-val processed = data.flatMap(_.split(" "))
-                    .map((_, 1))
-                    .reduceByKey(_ + _)
-                    .collect()

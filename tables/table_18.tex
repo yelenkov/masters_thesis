@@ -1,0 +1,29 @@
+\begin{table}[h!]
+\caption{Pattern matching and ADTs}
+\begin{lstlisting}
+case class User(id: Int, name: String, age: Int)
+case class Transaction(userId: Int, amount: Double, timestamp: Long)
+
+def processTransactions(transactions: List[Transaction]): Map[Int, Double] = transactions match {
+  case Nil => Map.empty[Int, Double]
+  case Transaction(userId, amount, _) :: rest =>
+    val userTotal = processTransactions(rest).getOrElse(userId, 0.0) + amount
+    processTransactions(rest) + (userId -> userTotal)
+}
+
+val users = List(User(1, "Alice", 25), User(2, "Bob", 30), User(3, "Charlie", 35))
+
+val transactions = List(
+  Transaction(1, 100.0, System.currentTimeMillis()),
+  Transaction(2, 50.0, System.currentTimeMillis()),
+  Transaction(1, 75.0, System.currentTimeMillis()),
+  Transaction(3, 120.0, System.currentTimeMillis())
+
+val userTotals = processTransactions(transactions)
+val userSummary = users.map(user => (user, userTotals.getOrElse(user.id, 0.0)))
+\end{lstlisting}
+\small
+\textit{Note.} In this example, ADTs is defined for \textbf{User} and \textbf{Transaction}. The \textbf{processTransactions} function uses pattern matching to process a list of transactions and calculate the total amount for each user. The \textbf{userSummary} combines the user information with their transaction totals using pattern matching and the \textbf{map} operation. This demonstrates how pattern matching and ADTs can be used together to process and analyze complex data structures in a data engineering context.
+\textit{Creator.} Author's own work.
+\end{table}
+

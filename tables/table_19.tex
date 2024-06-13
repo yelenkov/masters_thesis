@@ -1,0 +1,15 @@
+\begin{table}[h!]
+\caption{Implicit implementations}
+\begin{lstlisting}
+trait Semigroup[A] {
+  def combine(x: A, y: A): A}
+object Semigroup {
+  implicit val intSemigroup: Semigroup[Int] = new Semigroup[Int] {
+    def combine(x: Int, y: Int): Int = x + y}
+  implicit val stringSemigroup: Semigroup[String] = new Semigroup[String] {
+    def combine(x: String, y: String): String = x + y}}
+\end{lstlisting}
+\small
+\textit{Note.} In this example, a \textbf{Semigroup} type class is defined that represents types with an associative binary operation \textbf{combine}. Implicit implementations of \textbf{Semigroup} for \textbf{Int} and \textbf{String} types are provided, defining the \textbf{combine} operation as addition and concatenation, respectively.
+\textit{Creator.} Author's own work.
+\end{table}

@@ -1,0 +1,11 @@
+\begin{table}[h!]
+\caption{Example of lazy evaluation and infinite sequences}
+\begin{lstlisting}
+val data = Stream.from(1)
+val evenData = data.filter(_ % 2 == 0).take(5)
+println(evenData.toList) // Output: List(2, 4, 6, 8, 10)
+\end{lstlisting}
+\small
+\textit{Note.} In this example, the \textbf{data} stream is an infinite sequence of integers starting from 1. The \textbf{filter} operation lazily filters the even numbers from the stream, and the \textbf{take} operation limits the result to the first 5 even numbers. The computation is performed lazily, generating only the required elements on-demand, thus avoiding the need to materialize the entire infinite sequence in memory.
+\textit{Creator.} Author's own work.
+\end{table}

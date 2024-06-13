@@ -1,4 +1,0 @@
-def fibonacci: Stream[Int] = 0 #:: 1 #:: fibonacci.zip(fibonacci.tail).map(t => t._1 + t._2)
-
-val fibs = fibonacci.take(10).toList
-println(fibs) // Output: List(0, 1, 1, 2, 3, 5, 8, 13, 21, 34)

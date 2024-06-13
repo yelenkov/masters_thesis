@@ -1,0 +1,13 @@
+\begin{table}[h!]
+\caption{Data processing and aggregation}
+\begin{lstlisting}
+def processData(data: List[Shape]): Double = data match {
+  case Nil => 0.0
+  case Circle(radius) :: rest => radius * radius + processData(rest)
+  case Rectangle(width, height) :: rest => width * height + processData(rest)
+  case Triangle(base, height) :: rest => 0.5 * base * height + processData(rest)}
+\end{lstlisting}
+\small
+\textit{Note.} In this example, the \textbf{processData} function uses pattern matching to process a list of shapes. It recursively matches on the head of the list and extracts the relevant fields based on the shape variant. The function calculates a value based on the shape and recursively processes the rest of the list. This demonstrates how pattern matching can be used for data processing and aggregation.
+\textit{Creator.} Author's own work.
+\end{table}

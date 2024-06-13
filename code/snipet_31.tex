@@ -1,8 +1,0 @@
-def combineAll[A](values: List[A])(implicit semigroup: Semigroup[A]): A =
-  values.reduce(semigroup.combine)
-
-val numbers = List(1, 2, 3, 4, 5)
-val strings = List("Hello", ", ", "world", "!")
-
-println(combineAll(numbers)) // Output: 15
-println(combineAll(strings)) // Output: "Hello, world!"
