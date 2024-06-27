@@ -1,0 +1,14 @@
+\begin{table}[h!]
+\caption{Futures}
+\begin{lstlisting}
+import scala.concurrent.Future
+import scala.concurrent.ExecutionContext.Implicits.global
+def fetchData(url: String): Future[String] = Future {
+  Thread.sleep(1000) // Simulating a network call
+  s"Data from $url"}
+val dataFuture: Future[String] = fetchData("http://example.com/data")
+\end{lstlisting}
+\small
+\textit{Note.} In this example, \textbf{fetchData} returns a \textbf{Future[String]}, allowing the program to continue execution while the data is being fetched asynchronously. 
+\textit{Creator.} Author's own work.
+\end{table}

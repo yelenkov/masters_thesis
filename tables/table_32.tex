@@ -1,0 +1,11 @@
+\begin{table}[h!]
+\caption{Error handling}
+\begin{lstlisting}
+def fallbackData: Future[String] = Future.successful("Fallback Data")
+val robustDataFetch: Future[String] = fetchData("http://example.com/data")
+  .recover { case _: Exception => "Default Data" }.fallbackTo(fallbackData)
+\end{lstlisting}
+\small
+\textit{Note.} In this example, \textbf{recover} handles specific exceptions and provides a devault value, and \textbf{fallbackTo} tries an alternative \textbf{Future} if the firs one fails. This approach ensures that data pipelines can gracefully handle failures and continue processing with default or fallback data.
+\textit{Creator.} Author's own work.
+\end{table}

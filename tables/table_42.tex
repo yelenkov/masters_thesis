@@ -1,0 +1,26 @@
+\begin{table}[H]
+\caption{Bounded Resource Consumption}
+\begin{lstlisting}
+import akka.stream.scaladsl._
+import akka.{Done, NotUsed}
+import scala.concurrent.Future
+case class SensorData(id: String, value: Double)
+val sensorSource: Source[SensorData, NotUsed] = Source.repeat(0).map { i =>
+  SensorData(s"sensor-${i % 10}", math.random())
+}.throttle(100, 1.second)
+val aggregationFlow: Flow[SensorData, (String, Double), NotUsed] = 
+  Flow[SensorData]
+    .groupBy(10, _.id)
+    .fold((0.0, 0)) { case ((sum, count), data) => (sum + data.value, count + 1) }
+    .map { case (id, (sum, count)) => (id, sum / count) }
+    .mergeSubstreams
+val persistSink: Sink[(String, Double), Future[Done]] = 
+  Sink.foreach { case (id, avg) => println(s"Sensor $id average: $avg") }
+sensorSource
+  .via(aggregationFlow)
+  .runWith(persistSink)
+\end{lstlisting}
+\small
+\textit{Note.} This example demonstrates a more complex data engineering scenario using Reactive Streams principles in Scala. It simulates sensor data processing, including throttling, grouping, aggregation, and persistence.
+\textit{Creator.} Author's own work.
+\end{table}

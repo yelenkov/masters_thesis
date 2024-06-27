@@ -1,0 +1,15 @@
+\begin{table}[H]
+\caption{Actor Hierarchies and Supervision}
+\begin{lstlisting}
+class SupervisorActor extends Actor {
+  val child1 = context.actorOf(Props[ChildActor], "child1")
+  val child2 = context.actorOf(Props[ChildActor], "child2")
+  def receive: Receive = { case msg => child1 ! msg // Forward message to child1}
+  override val supervisorStrategy = OneForOneStrategy() {
+      case _: ArithmeticException => Restart
+      case _: Exception           => Stop}}
+\end{lstlisting}
+\small
+\textit{Note.} In this example, Akka implements a hierarchical structure for actors, known as the \textbf{actor hierarchy}. Hierarchy allows for structured error handling and fault tolerance. The supervisor can decide how to handle failures in its child actors, such as restarting them or stopping them .
+\textit{Creator.} Author's own work.
+\end{table}

@@ -1,0 +1,13 @@
+\begin{table}[h!]
+\caption{Non-associative operation}
+\begin{lstlisting}
+import scala.collection.parallel.TaskSupport
+import scala.collection.parallel.ForkJoinTaskSupport
+import java.util.concurrent.ForkJoinPool
+val customParSeq = (1 to 10000).par
+customParSeq.tasksupport = new ForkJoinTaskSupport(new ForkJoinPool(4))
+\end{lstlisting}
+\small
+\textit{Note.} In this example, a custom \textbf{ForkJoinTaskSupport} is created with a specific \textbf{ForkJoinPool} that limits the parallelism to four threads. This level of control is particularly useful in scenarios where it is needed to manage system resources carefully or when working in environments with specific threading requirements.
+\textit{Creator.} Author's own work.
+\end{table}

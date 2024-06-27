@@ -1,0 +1,18 @@
+\begin{table}[H]
+\caption{Asynchronous Processing}
+\begin{lstlisting}
+import akka.stream.scaladsl._
+import scala.concurrent.Future
+def processData(data: String): Future[String] = Future {
+  // Simulating asynchronous processing
+  Thread.sleep(100)
+  data.toUpperCase}
+val source: Source[String, NotUsed] = Source(List("data1", "data2", "data3"))
+val flow: Flow[String, String, NotUsed] = Flow[String].mapAsync(4)(processData)
+val sink: Sink[String, Future[Done]] = Sink.foreach(println)
+source.via(flow).runWith(sink)
+\end{lstlisting}
+\small
+\textit{Note.} In this example, \textbf{mapAsync} allows for asynchronous processing of each element in the stream, maintaining responsiveness even with time-consuming operations. \textbf{Reactive Streams} are designed to \textbf{handle data asynchronously}, allowing for non-blocking operations. This is crucial for building responsive systems that can handle high volumes of data without becoming unresponsive.
+\textit{Creator.} Author's own work.
+\end{table}

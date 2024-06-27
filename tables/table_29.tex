@@ -1,0 +1,15 @@
+\begin{table}[h!]
+\caption{Performance tuning with Task Support}
+\begin{lstlisting}
+import scala.collection.parallel.ForkJoinTaskSupport
+import java.util.concurrent.ForkJoinPool
+def parallelSum(numbers: Seq[Int], parallelism: Int): Int = {
+  val par = numbers.par
+  par.tasksupport = new ForkJoinTaskSupport(new ForkJoinPool(parallelism))
+  par.sum}
+val result = parallelSum((1 to 1000000), Runtime.getRuntime.availableProcessors())
+\end{lstlisting}
+\small
+\textit{Note.} In this example, the parallelism is set to match the number of available processors, which can lead to more efficient execution on the given hardware 
+\textit{Creator.} Author's own work.
+\end{table}

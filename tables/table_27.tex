@@ -1,0 +1,11 @@
+\begin{table}[h!]
+\caption{Non-associative operation}
+\begin{lstlisting}
+val numbers = (1 to 1000).toList
+println(numbers.reduce(_ - _))        // Sequential - predictable result
+println(numbers.par.reduce(_ - _))    // Parallel - potentially unpredictable result
+\end{lstlisting}
+\small
+\textit{Note.} In this example, subtraction is non-associative, and the parallel version may produce different results in different runs.
+\textit{Creator.} Author's own work.
+\end{table}

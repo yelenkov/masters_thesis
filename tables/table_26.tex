@@ -1,0 +1,10 @@
+\begin{table}[h!]
+\caption{Parallel vs. sequential processing}
+\begin{lstlisting}
+val result = (1 to 1000000).filter(_ % 2 == 0).map(_ * 2).sum // Sequential processing
+val parallelResult = (1 to 1000000).par.filter(_ % 2 == 0).map(_ * 2).sum // Parallel processing
+\end{lstlisting}
+\small
+\textit{Note.} In this example, the parallel version (par) can potentially execute much faster on multi-core systems, especially for large datasets.
+\textit{Creator.} Author's own work.
+\end{table}

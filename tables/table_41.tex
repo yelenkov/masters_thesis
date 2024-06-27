@@ -1,0 +1,11 @@
+\begin{table}[H]
+\caption{Bounded Resource Consumption}
+\begin{lstlisting}
+import akka.stream.ThrottleMode
+val throttledSource: Source[Int, NotUsed] = Source(1 to 100).throttle(10, 1.second, 5, ThrottleMode.shaping)
+throttledSource.runWith(Sink.foreach(println))
+\end{lstlisting}
+\small
+\textit{Note.} This example uses throttling to limit the rate of data flow, ensuring bounded resource consumption even with fast producers. \textbf{Reactive Streams} ensure that system resources are used efficiently by \textbf{bounding} the number of elements that can be in-flight at any given time. This prevents memory overflow and system crashes due to unbounded queues.
+\textit{Creator.} Author's own work.
+\end{table}

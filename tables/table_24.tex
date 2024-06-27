@@ -4,12 +4,9 @@
 import org.apache.spark.sql.SparkSession
 val spark = SparkSession.builder().appName("DataProcessing").getOrCreate()
 val data = spark.read.textFile("hdfs://path/to/data.txt")
-val processed = data.flatMap(_.split(" "))
-                    .map((_, 1))
-                    .reduceByKey(_ + _)
-                    .collect()
+val processed = data.flatMap(_.split(" ")).map((_, 1)).reduceByKey(_ + _).collect()
 \end{lstlisting}
 \small
-\textit{Note.} In this example, Spark is used to process a large text file stored in HDFS. The \textbf{flatMap} operation splits each line into words, the \textbf{map} operation converts each word into a tuple of \textbf{(word, 1)}, and the \textbf{reduceByKey} operation counts the occurrences of each word. The \textbf{collect} operation brings the results back to the driver program.
+\textit{Note.} In this example, \textbf{Spark} is used to process a large text file stored in HDFS. The \textbf{flatMap} operation splits each line into words, the \textbf{map} operation converts each word into a tuple of \textbf{(word, 1)}, and the \textbf{reduceByKey} operation counts the occurrences of each word. The \textbf{collect} operation brings the results back to the driver program.
 \textit{Creator.} Author's own work.
 \end{table}

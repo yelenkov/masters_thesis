@@ -1,0 +1,19 @@
+\begin{table}[H]
+\caption{Basic Actor Structure in Akka}
+\begin{lstlisting}
+import akka.actor.{Actor, ActorSystem, Props}
+class DataProcessorActor extends Actor {var processedCount = 0
+  def receive: Receive = {case data: String =>
+      processedCount += 1
+      println(s"Processing: $data (Total processed: $processedCount)")
+    case "getCount" => sender() ! processedCount
+    case _          => println("Unknown message")}}
+val system = ActorSystem("DataEngineeringSystem")
+val dataProcessor = system.actorOf(Props[DataProcessorActor], "dataProcessor")
+dataProcessor ! "Sample data"
+dataProcessor ! "getCount"
+\end{lstlisting}
+\small
+\textit{Note.} In this example, \textbf{DataProcessorActor} encapsulates its state (\textbf{processedCount}) and defines its behavior in the \textbf{receive} method. It can process data and respond to queries about its internal state, all through message passing .
+\textit{Creator.} Author's own work.
+\end{table}

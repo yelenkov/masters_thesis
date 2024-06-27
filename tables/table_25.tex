@@ -5,9 +5,7 @@ import akka.actor.{Actor, ActorSystem, Props}
 case class ProcessData(data: List[Int])
 case class ProcessedData(result: Int)
 class DataProcessor extends Actor {
-  def receive = {
-    case ProcessData(data) =>
-      val result = data.map(_ * 2).filter(_ % 3 == 0).sum
+  def receive = {case ProcessData(data) => val result = data.map(_ * 2).filter(_ % 3 == 0).sum
       sender() ! ProcessedData(result)}}
 val system = ActorSystem("DataProcessingSystem")
 val processor = system.actorOf(Props[DataProcessor], "processor")

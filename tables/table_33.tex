@@ -1,0 +1,15 @@
+\begin{table}[h!]
+\caption{Composition}
+\begin{lstlisting}
+def processMultipleDataSources(): Future[List[Int]] = {
+  val dataSources = List("http://example.com/data1", "http://example.com/data2")
+  Future.traverse(dataSources) { url =>
+    for {
+      data <- fetchData(url)
+      result <- processData(data)
+    } yield result}}
+\end{lstlisting}
+\small
+\textit{Note.} This example demonstrates how multiple data sources can be processed in parallel. Futures can be composed to create complex workflows; Sequencing using \textbf{flatMap} or for-comprehensions or using \textbf{Future.traverse}.
+\textit{Creator.} Author's own work.
+\end{table}

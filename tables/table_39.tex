@@ -1,0 +1,17 @@
+\begin{table}[H]
+\caption{Non-blocking Back Pressure}
+\begin{lstlisting}
+import akka.stream.OverflowStrategy
+val bufferingFlow: Flow[Int, Int, NotUsed] = Flow[Int]
+  .buffer(10, OverflowStrategy.backpressure)
+  .map { x =>
+    Thread.sleep(100) // Simulate slow processing
+    x * 2}
+Source(1 to 100)
+  .via(bufferingFlow)
+  .runWith(Sink.foreach(println)))
+\end{lstlisting}
+\small
+\textit{Note.} In this example, the buffer stage with OverflowStrategy.backpressure ensures that if the downstream processing is slow, the upstream will be notified to slow down its production rate. \textbf{Back pressure} is a mechanism that allows consumers to signal to producers about their current capacity to handle data. This prevents fast producers from overwhelming slow consumers, ensuring system stability.
+\textit{Creator.} Author's own work.
+\end{table}

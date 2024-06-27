@@ -1,0 +1,14 @@
+\begin{table}[H]
+\caption{Actors Scalability and Performance}
+\begin{lstlisting}
+val system = ActorSystem("DataProcessingSystem")
+val router = system.actorOf(
+  RoundRobinPool(10).props(Props[DataProcessorActor]),
+  "dataProcessorRouter")
+(1 to 1000).foreach { i =>
+  router ! s"Data chunk $i"}
+\end{lstlisting}
+\small
+\textit{Note.} This example creates a router with 10 instances of \textbf{DataProcessorActor}, distributing the workload across multiple actors for parallel processing. Actors are lightweight and can be created in large numbers, allowing for fine-grained parallelism in data processing tasks.
+\textit{Creator.} Author's own work.
+\end{table}

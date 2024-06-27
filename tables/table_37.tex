@@ -1,0 +1,17 @@
+\begin{table}[H]
+\caption{Actors Scalability and Performance}
+\begin{lstlisting}
+class AggregatorActor extends Actor {
+  var sum = 0
+  var count = 0
+  def receive: Receive = {
+    case value: Int =>
+      sum += value
+      count += 1
+    case "getAverage" =>
+      sender() ! (if (count > 0) sum.toDouble / count else 0)}}
+\end{lstlisting}
+\small
+\textit{Note.} In this example, actor maintains a \textbf{running average}, demonstrating how stateful computations can be encapsulated within an actor. Actors can maintain state between messages, useful for stateful data processing operations.
+\textit{Creator.} Author's own work.
+\end{table}
